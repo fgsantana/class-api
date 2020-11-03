@@ -32,5 +32,5 @@ public class Student {
 
     @Column(unique = true)
     @NotEmpty
-    private String enrolCod;
+    private String enrollCod;
 }

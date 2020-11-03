@@ -1,6 +1,7 @@
 package com.github.fgsantana.classapi.service;
 
 import com.github.fgsantana.classapi.exception.CodContraintViolationException;
+import com.github.fgsantana.classapi.exception.StudentNotFoundException;
 import com.github.fgsantana.classapi.model.Student;
 import com.github.fgsantana.classapi.repository.ClassRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,13 +17,23 @@ public class ClassService {
     final ClassRepository repo;
 
     public Student saveStudent(Student student) throws CodContraintViolationException {
-        try{
-           return repo.save(student);
-        }
-        catch(DataIntegrityViolationException e){
-            throw new CodContraintViolationException(student.getEnrolCod());
+        try {
+            return repo.save(student);
+        } catch (DataIntegrityViolationException e) {
+            throw new CodContraintViolationException(student.getEnrollCod());
         }
     }
 
+    public Student getStudentById(Long id) {
+        return repo.findById(id).orElseThrow(() -> new StudentNotFoundException(id));
+    }
 
+
+    public List<Student> getStudents() {
+        return repo.findAll();
+    }
+
+    public Student getStudentByEnrollCod(String enrollCod){
+        return repo.findByEnrollCod(enrollCod).orElseThrow(() -> new StudentNotFoundException(enrollCod));
+    }
 }
