@@ -8,4 +8,7 @@ public class StudentNotFoundException extends Exception {
     public StudentNotFoundException(Long id) {
         super("The requested student with id " + id + " was not found!");
     }
+    public StudentNotFoundException(String enrollCod) {
+        super("The requested student with enrollment code " + enrollCod + " was not found!");
+    }
 }

@@ -16,7 +16,7 @@ public class ClassService {
 
     final ClassRepository repo;
 
-    public Student saveStudent(Student student) throws CodContraintViolationException {
+    public Student saveStudent(Student student)  {
         try {
             return repo.save(student);
         } catch (DataIntegrityViolationException e) {
