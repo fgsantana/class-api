@@ -9,3 +9,4 @@
 - H2 Database (in memory)
 - Hibernate Bean Validator
 - OpenFeign (http client)
+- OpenAPI 3.0

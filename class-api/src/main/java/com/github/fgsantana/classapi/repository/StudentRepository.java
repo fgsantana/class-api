@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ClassRepository extends JpaRepository<Student, Long> {
+public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    @Query(value = "SELECT * FROM student WHERE enroll_cod=?1", nativeQuery=true)
-    public Optional<Student> findByEnrollCod(String enrollCod);
+    @Query(value = "SELECT s FROM Student s WHERE s.enrollCod=?1")
+    Optional<Student> findByEnrollCod(String enrollCod);
 }
